@@ -13,10 +13,11 @@ document.querySelector('.guess').value = 23;
 console.log(document.querySelector('.guess').value);
 */
 
-const target = Math.trunc(Math.random() * 20) + 1;
+const getNewScore = () => Math.trunc(Math.random() * 20) + 1;
+
+const target = getNewScore();
 let score = 20;
 let highScore = 0;
-document.querySelector('.number').textContent = target;
 
 // EVENT LISTENERS AND HANDLERS
 
@@ -32,6 +33,7 @@ document.querySelector('.check').addEventListener('click', function () {
   } else if (guess === target) {
     document.querySelector('.message').textContent =
       'Correct Number! You WON🎉';
+    document.querySelector('.number').textContent = target;
     // Inline styles
     document.querySelector('body').style.backgroundColor = '#60b347';
     document.querySelector('.number').style.width = '30rem';
@@ -49,4 +51,8 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.message').textContent = 'You lost the game! ☹';
     }
   }
+});
+
+document.querySelector('.again').addEventListener('click', function () {
+  score = getScore();
 });
