@@ -13,15 +13,31 @@ document.querySelector('.guess').value = 23;
 console.log(document.querySelector('.guess').value);
 */
 
+const target = Math.trunc(Math.random() * 20) + 1;
+let score = 20;
+let highScore = 0;
+document.querySelector('.number').textContent = target;
+
 // EVENT LISTENERS AND HANDLERS
 
 document.querySelector('.check').addEventListener('click', function () {
-  // console.log(document.querySelector('.guess').value); // Handler
-  // document.querySelector('.message').textContent = 'Correct Number!🎉';
+  // Get the player's input
   const guess = Number(document.querySelector('.guess').value);
   console.log(guess, typeof guess);
+
   // If the input field is empty, guess is 0 (falsy)
+
   if (!guess) {
     document.querySelector('.message').textContent = '⛔ No number!';
+  } else if (guess === target) {
+    document.querySelector('.message').textContent = 'Correct Number!🎉';
+  } else {
+    if (guess > target)
+      document.querySelector('.message').textContent = 'Too High 📈';
+    else if (guess < target)
+      document.querySelector('.message').textContent = 'Too Low 📉';
+    // Decrease the score
+    score--;
+    document.querySelector('.score').textContent = score;
   }
 });
