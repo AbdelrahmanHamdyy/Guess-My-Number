@@ -13,9 +13,9 @@ document.querySelector('.guess').value = 23;
 console.log(document.querySelector('.guess').value);
 */
 
-const getNewScore = () => Math.trunc(Math.random() * 20) + 1;
+const getNewTarget = () => Math.trunc(Math.random() * 20) + 1;
 
-const target = getNewScore();
+const target = getNewTarget();
 let score = 20;
 let highScore = 0;
 
@@ -54,5 +54,5 @@ document.querySelector('.check').addEventListener('click', function () {
 });
 
 document.querySelector('.again').addEventListener('click', function () {
-  score = getScore();
+  score = getNewTarget();
 });
