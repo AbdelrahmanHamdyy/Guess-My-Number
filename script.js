@@ -15,7 +15,7 @@ console.log(document.querySelector('.guess').value);
 
 const getNewTarget = () => Math.trunc(Math.random() * 20) + 1;
 
-const target = getNewTarget();
+let target = getNewTarget();
 let score = 20;
 let highScore = 0;
 
@@ -33,6 +33,10 @@ document.querySelector('.check').addEventListener('click', function () {
   } else if (guess === target) {
     document.querySelector('.message').textContent =
       'Correct Number! You WON🎉';
+    if (score > highScore) {
+      highScore = score;
+      document.querySelector('.highscore').textContent = highScore;
+    }
     document.querySelector('.number').textContent = target;
     // Inline styles
     document.querySelector('body').style.backgroundColor = '#60b347';
@@ -54,5 +58,12 @@ document.querySelector('.check').addEventListener('click', function () {
 });
 
 document.querySelector('.again').addEventListener('click', function () {
-  score = getNewTarget();
+  document.querySelector('.number').textContent = '?';
+  document.querySelector('body').style.backgroundColor = '#222';
+  document.querySelector('.number').style.width = '15rem';
+  document.querySelector('.message').textContent = 'Start guessing...';
+  target = getNewTarget();
+  score = 20;
+  document.querySelector('.score').textContent = score;
+  document.querySelector('.guess').value = '';
 });
