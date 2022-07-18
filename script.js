@@ -37,7 +37,12 @@ document.querySelector('.check').addEventListener('click', function () {
     else if (guess < target)
       document.querySelector('.message').textContent = 'Too Low 📉';
     // Decrease the score
-    score--;
-    document.querySelector('.score').textContent = score;
+    if (score > 1) {
+      score--;
+      document.querySelector('.score').textContent = score;
+    } else {
+      if (score == 1) document.querySelector('.score').textContent = 0;
+      document.querySelector('.message').textContent = 'You lost the game! ☹';
+    }
   }
 });
