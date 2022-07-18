@@ -30,7 +30,11 @@ document.querySelector('.check').addEventListener('click', function () {
   if (!guess) {
     document.querySelector('.message').textContent = '⛔ No number!';
   } else if (guess === target) {
-    document.querySelector('.message').textContent = 'Correct Number!🎉';
+    document.querySelector('.message').textContent =
+      'Correct Number! You WON🎉';
+    // Inline styles
+    document.querySelector('body').style.backgroundColor = '#60b347';
+    document.querySelector('.number').style.width = '30rem';
   } else {
     if (guess > target)
       document.querySelector('.message').textContent = 'Too High 📈';
